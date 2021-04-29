@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message Request {
+    float number_one = 1;
+    float number_two = 2;
+    string message = 3; 
+}
+
+message Response {
+    float result = 1;
+    string response_message = 2;
+}
+
+service Server {
+    rpc BusinessLogic (Request) returns (Response);
+}
