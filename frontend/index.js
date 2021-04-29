@@ -1,15 +1,15 @@
 const { Request } = require('./doc_pb')
-const { ServerClient } = require('./doc_grpc_web_pb.js')
+const { ServerClient } = require('./doc_grpc_web_pb')
 
-const client = new ServerClient("http://localhost:50051")
-const request = new Request()
-request.setNumberOne(1)
-request.setNumberTwo(2)
-request.setMessage("Roberto")
+const client = new ServerClient('http://localhost:80')
+const enableDevTools = window.__GRPCWEB_DEVTOOLS__ || (() => {});
+enableDevTools([
+  client,
+]);
 
 sendMessage = () => {
-  client.businessLogic(request, null, (err, response) => {
+  client.businessLogic(new Request(1,2,"Roberto"), {}, (err, response) => {
     console.log(err)
-    console.log(response)
+    console.log(String(response))
   })
 }
