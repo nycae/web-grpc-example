@@ -7,6 +7,7 @@ from concurrent import futures
 
 class ServiceServicerI(doc_pb2_grpc.ServerServicer):
     def BusinessLogic(self, request, context):
+        print("ping")
         numeric_result = request.number_one + request.number_two
         string_result = f"Hello, {request.message}"
 
